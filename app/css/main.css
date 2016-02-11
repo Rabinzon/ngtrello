@@ -1,0 +1,107 @@
+.body{
+    max-height: 100vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.fixed-nav{
+    height: 55px;
+    margin-bottom: 20px;
+}
+.navbar{
+    width: 100%;
+    position: fixed;
+}
+.navbar-default{
+    border: none;
+    border-radius: 0;
+    margin: 0;
+}
+.col{
+    margin: 15px;
+    display: inline-block;
+    position: relative;
+    width: 275px;
+}
+
+.container{
+
+}
+.board{
+    width:275px;
+    background: #cccccc;
+    display: block;
+    min-height: 100px;
+    border-radius: 4px;
+    padding: 5px;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: visible;
+    position: absolute;
+    top: 0;
+}
+.board p{
+    font-weight: 700;
+    padding: 0px 10px;
+}
+.board a{
+    color: #000000;
+}
+.control{
+    float: right;
+}
+.edit-input{
+    width: 235px;
+    height: 26px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: navajowhite;
+    border-radius: 5px;
+    background-color: white;
+}
+.select-list{
+    display: block;
+    width: 235px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: white;
+}
+.card{
+    margin: 5px auto;
+    margin-bottom: 10px;
+    width: 250px;
+    padding: 6px 6px 8px 8px;
+    overflow: auto;
+    border-radius: 4px;
+    background: #e0e0e0;
+}
+.new-list{
+    width:275px;
+    background: #cccccc;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 5px;
+    position: relative;
+    top: 7px;
+}
+.new-list input{
+    width:250px;
+    border: none;
+    padding: 3px 10px;
+    border-radius: 5px;
+    display: block;
+    margin: auto;
+}
+.new-card input{
+    border: none;
+    display: block;
+    margin: auto;
+    width: 250px;
+    padding: 0px 6px 0px 6px;
+    overflow: auto;
+    border-radius: 4px;
+    background: #e0e0e0;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trello</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/css/main.css">
+</head>
+<body ng-cloak class="body" ng-app="App">
+    <div class="fixed-nav">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-brand">Trello</div>
+            </div>
+        </nav>
+    </div>
+    <div>
+        <section
+            class="list-container"
+            ng-controller="listsCtrl as listsCtrl">
+            <div class="col" ng-repeat="list in listsCtrl.lists" ng-controller="listCtrl as listCtrl">
+                <div class="board">
+                    <p>{{list.listName}}
+                        <span class="control">
+                            <a ng-click="listCtrl.removeList(list)" class="text-left">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                         </span>
+                    </p>
+                    <div class="new-card">
+                        <form ng-submit="listCtrl.createCard(list)">
+                            <input  type="text"
+                                    ng-model="listCtrl.cardDescription"
+                                    class="card-input"
+                                    placeholder="New card">
+                        </form>
+                    </div>
+                    <div  class="card"
+                          ng-controller="cardCtrl as cardCtrl"
+                          ng-repeat="card in listCtrl.getCards(list)">
+                        <div ng-if="!cardCtrl.isCardEdit">
+                            <span>
+                                    {{card.description}}
+                                <span class="control">
+                                    <a ng-click="cardCtrl.editCard(card)">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                    <a ng-click="cardCtrl.removeCard(card)">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </span>
+
+                            </span>
+                        </div>
+                        <div ng-if="cardCtrl.isCardEdit">
+                            <form ng-submit="cardCtrl.updateCard()">
+                                <input  class="edit-input"
+                                        type="text"
+                                        close-editing
+                                        is-editing="cardCtrl.isCardEdit"
+                                        ng-model="cardCtrl.editingCard.description">
+                                <select class="select-list"
+                                        ng-model="cardCtrl.editingCard.listId"
+                                        ng-change="cardCtrl.updateCard()"
+                                        ng-options="list.id as list.listName for list in listsCtrl.lists">
+                                </select>
+
+                            </form>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <div class="col">
+                <div class="new-list">
+                    <form ng-submit="listsCtrl.addList()">
+                        <input type="text"
+                               ng-model="listsCtrl.listName"
+                               placeholder="create new board">
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/listsCtrl.js"></script>
+    <script src="app/controllers/listCtrl.js"></script>
+    <script src="app/controllers/cardCtrl.js"></script>
+    <script src="app/factories/listFactory.js"></script>
+    <script src="app/factories/cardFactory.js"></script>
+    <script src="app/directives/closeEditing.js"></script>
+</body>
+</html>
