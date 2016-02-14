@@ -3,17 +3,17 @@ angular.module('App').factory('cardFactory', function() {
     var cards = [
         {
             id: 1,
-            description: 'fig bug',
+            description: 'Fix bug',
             listId: 1
         },
         {
             id: 2,
-            description: 'fig bug',
+            description: 'Fix bug',
             listId: 1
         },
         {
             id: 3,
-            description: 'fig bug',
+            description: 'Fix bug',
             listId: 2
         }
     ];

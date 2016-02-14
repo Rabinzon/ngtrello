@@ -9,7 +9,7 @@ angular.module('App').factory('listFactory', function() {
         },
         {
             id: 2,
-            listName: 'DO'
+            listName: 'DOING'
         }
     ];
     service.getLists = function() {
